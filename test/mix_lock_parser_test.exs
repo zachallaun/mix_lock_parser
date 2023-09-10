@@ -14,8 +14,12 @@ defmodule MixLockParserTest do
     dir = Path.join([:code.priv_dir(:mix_lock_parser), "sample_lockfiles"])
 
     file_names =
-      auto_assert ["dash_mix.lock", "default_phoenix_mix.lock", "exsync_mix.lock"] <-
-                    File.ls!(dir)
+      auto_assert [
+                    "dash_mix.lock",
+                    "default_phoenix_mix.lock",
+                    "exsync_mix.lock",
+                    "short_mix.lock"
+                  ] <- File.ls!(dir) |> Enum.sort()
 
     auto_assert %{
                   "dash_mix.lock" => [
@@ -112,7 +116,8 @@ defmodule MixLockParserTest do
                     {:makeup, :hex, "1.0.0"},
                     {:makeup_elixir, :hex, "0.14.0"},
                     {:nimble_parsec, :hex, "0.5.0"}
-                  ]
+                  ],
+                  "short_mix.lock" => [{:nimble_parsec, :hex, "1.3.1"}]
                 } <-
                   Map.new(file_names, fn file_name ->
                     path = Path.join([dir, file_name])

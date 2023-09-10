@@ -3,15 +3,18 @@ defmodule MixLockParser do
   alias MixLockParser.ExsLoader
 
   def read_mix_lock!(path) do
-    {:ok, data} =
-      File.read!(path)
-      |> safe_eval()
+    File.read!(path)
+    |> read_mix_lock_contents!()
+  end
 
-    parse_mix_lock_contents(data)
+  def read_mix_lock_contents!(contents) when is_binary(contents) do
+    {:ok, data} = safe_eval(contents)
+
+    parse_mix_lock_data(data)
     |> Enum.sort()
   end
 
-  def parse_mix_lock_contents(data) when is_map(data) do
+  def parse_mix_lock_data(data) when is_map(data) do
     Enum.flat_map(data, fn
       {dep, {:hex, _dep, version, _hash, _build_tool, _deps, "hexpm", _other_hash}} ->
         [{dep, :hex, version}]

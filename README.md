@@ -1,5 +1,11 @@
 # MixLockParser
 
+MixLockParser is able to read an Elixir `mix.lock` file and return the list of dependencies used and their versions.
+
+In the future it may be expanded to also include information about your direct
+dependencies dependencies but I don't have a use-case that requires it for now
+so that is currently out of scope.
+
 - [ ] Write user-facing readme
 - [ ] Support path dependencies
 - [ ] Add tests for older versions of lock files

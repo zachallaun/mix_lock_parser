@@ -24,7 +24,7 @@ iex> MixLockParser.read_mix_lock!("priv/sample_lockfiles/short_mix.lock")
 
 - [x] Write user-facing readme
 - [ ] Support path dependencies
-- [ ] Add tests for older versions of lock files
+- [x] Add tests for older versions of lock files
 
 ## Installation
 

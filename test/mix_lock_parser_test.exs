@@ -18,6 +18,7 @@ defmodule MixLockParserTest do
                     "dash_mix.lock",
                     "default_phoenix_mix.lock",
                     "exsync_mix.lock",
+                    "publicsuffix_mix.lock",
                     "short_mix.lock"
                   ] <- File.ls!(dir) |> Enum.sort()
 
@@ -116,6 +117,12 @@ defmodule MixLockParserTest do
                     {:makeup, :hex, "1.0.0"},
                     {:makeup_elixir, :hex, "0.14.0"},
                     {:nimble_parsec, :hex, "0.5.0"}
+                  ],
+                  "publicsuffix_mix.lock" => [
+                    {:earmark, :hex, "0.2.1"},
+                    {:ex_doc, :hex, "0.11.5"},
+                    {:idna, :hex, "5.1.0"},
+                    {:unicode_util_compat, :hex, "0.3.1"}
                   ],
                   "short_mix.lock" => [{:nimble_parsec, :hex, "1.3.1"}]
                 } <-

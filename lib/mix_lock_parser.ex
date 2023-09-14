@@ -23,6 +23,10 @@ defmodule MixLockParser do
       {dep, {:hex, _dep, version, _hash, _build_tool, _deps, "hexpm"}} ->
         [{dep, :hex, version}]
 
+      # Ancient version
+      {dep, {:hex, dep, version, _hash, _build_tool, _}} ->
+        [{dep, :hex, version}]
+
       {dep, {:git, _dep, _version, _}} ->
         Logger.debug("Ignoring #{dep} because it is a git dep")
         []

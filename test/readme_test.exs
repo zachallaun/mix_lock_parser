@@ -1,4 +1,4 @@
 defmodule ReadmeTest do
   use ExUnit.Case
-  doctest_file "README.md"
+  doctest_file("README.md")
 end
